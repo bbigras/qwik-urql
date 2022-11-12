@@ -5,15 +5,16 @@
   "scripts": {
     "build": "qwik build",
     "build.lib": "vite build --mode lib",
-    "build.types": "tsc --emitDeclarationOnly",
+    "build.types": "tsc --incremental --noEmit",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
-    "lint": "eslint \"src/**/*.ts*\"",
     "release": "np",
     "start": "vite --open --mode ssr",
-    "qwik": "qwik"
+    "qwik": "qwik",
+    "preview": "qwik build preview && vite preview --open"
   },
   "main": "./lib/index.qwik.cjs",
   "qwik": "./lib/index.qwik.mjs",
@@ -76,5 +77,8 @@
     "ts-essentials": "^9.3.0",
     "typescript": "4.8.4",
     "vite": "3.2.3"
+  },
+  "dependencies": {
+    "vite-tsconfig-paths": "^3.5.2"
   }
 }
